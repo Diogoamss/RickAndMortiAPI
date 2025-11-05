@@ -4,8 +4,7 @@ import { styles } from '../Styles/Styles.js';
 import CharacterList from '../Components/CharacterList.js';
 import { fetchCharacters } from '../api/rickAndMorty';
 
-
-const ListScreen = () => {
+const ListScreen = ({ navigation }) => {
     const [characters, setCharacters] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -43,7 +42,12 @@ const ListScreen = () => {
     return (
         <FlatList
             data={characters}
-            renderItem={({item}) => <CharacterList character={item} />}
+            renderItem={({item}) => (
+                <CharacterList
+                    character={item}
+                    onPress={() => navigation.navigate('ComingSoon')}
+                />
+            )}
             keyExtractor={(item) => item.id.toString()}
         />
     );
