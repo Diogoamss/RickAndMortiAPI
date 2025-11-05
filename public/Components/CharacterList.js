@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react ';
-import { FlatList, Text, Image, ActivityIndicator, TouchableOpacity, view } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { FlatList, Text, Image, ActivityIndicator, TouchableOpacity, View } from 'react-native';
 import { styles } from '../Styles/Styles.js';
-import { ActivityIndicator } from 'react-native-web';
+import { fetchCharacters } from '../api/rickAndMorty.js';
 
 const CharacterList = () => {
     const [characters, setCharacters] = useState([]);
@@ -35,10 +35,15 @@ const CharacterList = () => {
         data={characters}
         keyExtractor={(item) => item.id.toString()}
         renderItem={({item}) => (
-            <View style={styles.characterItem}>
-                <Text style={styles.characterName}>{item.name}</Text>
-                <image source={{url: item.image}} style={styles.characterImage} />
-            </View>
+            <TouchableOpacity style={styles.characterItem}>
+                <Image source={{ uri: item.image }} style={styles.characterImage} />
+                <View style={styles.characterInfo}>
+                    <Text style={styles.characterName}>{item.name}</Text>
+                    <Text style={styles.characterStatus}>
+                        {item.status} - {item.species}
+                    </Text>
+                </View>
+            </TouchableOpacity>
         )}
         />
     );

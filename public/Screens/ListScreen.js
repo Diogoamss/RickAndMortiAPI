@@ -1,4 +1,4 @@
-import { view, FlatList, ActivityIndicator, Text, Image, TouchableOpacity } from 'react-native';
+import { View, FlatList, ActivityIndicator, Text } from 'react-native';
 import React, { useEffect, useState } from 'react';
 import { styles } from '../Styles/Styles.js';
 import CharacterList from '../Components/CharacterList.js';
@@ -24,10 +24,10 @@ const ListScreen = () => {
         LoadCharacters();
     }, []);
 
-    if (Loading){
+    if (loading){
         return (
             <View style={styles.loadingContainer}>
-                <ActivityIndicator size="Large" color="#0000ff" />
+                <ActivityIndicator size="large" color="#0000ff" />
             </View>
         );
     }
@@ -42,9 +42,9 @@ const ListScreen = () => {
 
     return (
         <FlatList
-        data={characters}
-        renderItem={({item}) => <CharacterList character={item} />}
-        keyExtractor={(item) => item.id.toString()}
+            data={characters}
+            renderItem={({item}) => <CharacterList character={item} />}
+            keyExtractor={(item) => item.id.toString()}
         />
     );
 };

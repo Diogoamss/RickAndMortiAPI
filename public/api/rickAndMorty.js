@@ -1,13 +1,13 @@
-import axios from 'axios';
+const BASE_URL = 'https://rickandmortyapi.com/api';
 
-const API_URL = 'https://rickandmortyapi.com/api/character'
-
-export const fetchCharacters = async (page = 1) => {
+export async function fetchCharacters() {
     try {
-        const response = await axios.get('${API_URL}?page=${page');
-        return response.data;
-    }catch (error) {
-        console.error('Error fetching characters:', error);
-        throw error;
+        const res = await fetch(`${BASE_URL}/character`);
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        const data = await res.json();
+        return data;
+    } catch (err) {
+        console.error('Error fetching characters:', err);
+        throw err;
     }
-};
+}
