@@ -45,7 +45,7 @@ const ListScreen = ({ navigation }) => {
             renderItem={({item}) => (
                 <CharacterList
                     character={item}
-                    onPress={() => navigation.navigate('ComingSoon')}
+                    onPress={() => navigation.navigate('CharacterDetail', { id: item.id })}
                 />
             )}
             keyExtractor={(item) => item.id.toString()}
