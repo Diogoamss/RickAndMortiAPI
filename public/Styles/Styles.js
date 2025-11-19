@@ -7,7 +7,7 @@ export const styles = StyleSheet.create({
         padding:10
     },
     characterCard: {
-        backgroundColor: '#101826',
+        backgroundColor: '#101826ff',
         borderRadius: 10,
         padding: 10,
         marginVertical: 10,
@@ -85,5 +85,29 @@ export const styles = StyleSheet.create({
         paddingVertical: 8,
         borderRadius: 8,
         marginBottom: 10,
+    },
+    backgroundImage: {
+        flex: 1,
+        resizeMode: 'cover',
+        padding: 10,
+    },
+    detailCard: {
+        backgroundColor: 'rgba(16,24,38,0.95)',
+        borderRadius: 12,
+        padding: 16,
+        marginTop: -60,
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 4 },
+        shadowOpacity: 0.3,
+        shadowRadius: 6,
+        elevation: 6,
+    },
+    detailImage: {
+        width: '100%',
+        height: 320,
+        borderRadius: 12,
+        marginBottom: -60,
+        alignSelf: 'center',
+        zIndex: 2,
     },
 })

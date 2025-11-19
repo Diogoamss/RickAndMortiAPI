@@ -13,7 +13,14 @@ const Stack = createNativeStackNavigator();
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="List">
+      <Stack.Navigator
+        initialRouteName="List"
+        screenOptions={{
+          headerStyle: { backgroundColor: '#0d920dff' },
+          headerTintColor: '#e6f7ef',
+          headerTitleStyle: { fontWeight: '700' },
+        }}
+      >
         <Stack.Screen name="List" component={ListScreen} options={{ title: 'Personagens' }} />
         <Stack.Screen name="CharacterDetail" component={CharacterDetailScreen} options={{ title: 'Detalhes' }} />
         <Stack.Screen name="ComingSoon" component={ComingSoonScreen} options={{ title: '' }} />

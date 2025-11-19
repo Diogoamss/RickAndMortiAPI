@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { View, FlatList, ActivityIndicator, Text, TextInput } from 'react-native';
+import { View, FlatList, ActivityIndicator, Text, TextInput, ImageBackground } from 'react-native';
 import { styles } from '../Styles/Styles.js';
 import CharacterList from '../Components/CharacterList.js';
 import { fetchCharacters } from '../api/rickAndMorty';
@@ -92,38 +92,41 @@ const ListScreen = ({ navigation }) => {
     }
 
     return (
-        <View style={styles.container}>
-            <TextInput
-                placeholder="Buscar personagem..."
-                value={query}
-                onChangeText={setQuery}
-                style={styles.searchInput}
-                autoCapitalize="none"
-                clearButtonMode="while-editing"
-            />
-
-            {error ? (
-                <View style={styles.errorContainer}>
-                    <Text>Error: {error}</Text>
-                </View>
-            ) : (
-                <FlatList
-                    data={characters}
-                    renderItem={({ item }) => (
-                        <CharacterList
-                            character={item}
-                            onPress={() => navigation.navigate('CharacterDetail', { id: item.id })}
-                        />
-                    )}
-                    keyExtractor={(item) => item.id.toString()}
-                    onEndReached={handleEndReached}
-                    onEndReachedThreshold={0.5}
-                    ListFooterComponent={loadingMore ? <ActivityIndicator size="small" color="#00b894" /> : null}
-                    refreshing={refreshing}
-                    onRefresh={handleRefresh}
+        <ImageBackground source={require('../asset/Rick&Morty-backgorund.jpg')} style={styles.backgroundImage}>
+            <View style={{ flex: 1, backgroundColor: 'rgba(0,0,0,0.35)', padding: 8 }}>
+                <TextInput
+                    placeholder="Buscar personagem..."
+                    value={query}
+                    onChangeText={setQuery}
+                    style={styles.searchInput}
+                    autoCapitalize="none"
+                    clearButtonMode="while-editing"
+                    placeholderTextColor="#bcd7cd"
                 />
-            )}
-        </View>
+
+                {error ? (
+                    <View style={styles.errorContainer}>
+                        <Text style={{ color: '#fff' }}>Error: {error}</Text>
+                    </View>
+                ) : (
+                    <FlatList
+                        data={characters}
+                        renderItem={({ item }) => (
+                            <CharacterList
+                                character={item}
+                                onPress={() => navigation.navigate('CharacterDetail', { id: item.id })}
+                            />
+                        )}
+                        keyExtractor={(item) => item.id.toString()}
+                        onEndReached={handleEndReached}
+                        onEndReachedThreshold={0.5}
+                        ListFooterComponent={loadingMore ? <ActivityIndicator size="small" color="#00b894" /> : null}
+                        refreshing={refreshing}
+                        onRefresh={handleRefresh}
+                    />
+                )}
+            </View>
+        </ImageBackground>
     );
 };
 
