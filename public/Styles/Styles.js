@@ -3,11 +3,11 @@ import { StyleSheet } from 'react-native';
 export const styles = StyleSheet.create({
     container:{
         flex: 1,
-        backgroundColor: '#f5f5f5',
+        backgroundColor: '#0f1720',
         padding:10
     },
     characterCard: {
-        backgroundColor: '#fff',
+        backgroundColor: '#101826',
         borderRadius: 10,
         padding: 10,
         marginVertical: 10,
@@ -33,10 +33,11 @@ export const styles = StyleSheet.create({
     },
     characterName: {
         fontSize: 18,
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        color: '#ffffff'
     },
     characterStatus: {
-        color: '#666',
+        color: '#9aa4b2',
         marginTop: 4,
     },
     characterImage: {
@@ -76,5 +77,13 @@ export const styles = StyleSheet.create({
     },
     detailValue: {
         flex: 1,
+    },
+    searchInput: {
+        backgroundColor: '#0b2230',
+        color: '#e6f7ef',
+        paddingHorizontal: 12,
+        paddingVertical: 8,
+        borderRadius: 8,
+        marginBottom: 10,
     },
 })
